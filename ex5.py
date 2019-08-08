@@ -17,3 +17,5 @@ def deposit_calculator(total_cost, annual_salary, portion_saved):
 
 
 print(deposit_calculator(1000000, 120000, 0.10))
+
+print("test files added")
