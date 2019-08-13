@@ -1,4 +1,4 @@
-from hangman import is_word_guessed, in_secret_word, get_available_letters, get_guessed_word
+from hangman import is_word_guessed, get_available_letters, get_guessed_word
 
 def test_is_word_guessed():
     secret_word = 'apple'
