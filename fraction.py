@@ -11,12 +11,10 @@ class Fraction(object):
         
         if isinstance(num, int) == False:
             raise Exception("numerator is not an integer")
-            return
-
+            
         if isinstance(denom, int) == False:
             raise Exception("denomerator is not an integer")
-            return
-
+            
         self.num = num
         self.denom = denom
         
