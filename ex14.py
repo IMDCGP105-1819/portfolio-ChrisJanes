@@ -1,6 +1,11 @@
 import string
 
-song = """Don't be so quick to walk away
+song = """ 
+hello, hello, hello, hello, one, two, three.
+goodbye, goodbye, goodbye, goodbye, three, four, five.
+"""
+
+song_1 = """Don't be so quick to walk away
 Dance with me
 I wanna rock your body
 Please stay
@@ -128,7 +133,7 @@ Let's do something
 Let's make a bet
 Cause I, gotta have you naked by the end of this song""" 
 
-def word_frequency(lyrics):
+def word_frequency(lyrics, high = -1, less = False):
     frequency = {}
 
     lyrics = lyrics.translate(str.maketrans('', '', string.punctuation))
@@ -142,6 +147,34 @@ def word_frequency(lyrics):
         else:
             frequency[word] += 1
 
-    print(frequency)
+    highest = high
+    most_frequent = []
 
-word_frequency(song)
+    sorted_words = sorted(frequency, key=frequency.get, reverse=True)
+
+    if less == False:
+        highest = frequency[sorted_words[0]]
+
+    for word in sorted_words:
+        if frequency[word] == highest:
+            most_frequent.append(word)
+                    
+    return (most_frequent, highest)
+
+def word_frequency_with_boundary(lyrics, boundary):
+    result = []
+
+    (_, highest) = word_frequency(lyrics)
+
+    if boundary > highest:
+        return result
+
+    for n in range(highest, boundary-1, -1):
+        (freq, count) = word_frequency(lyrics, n, True)
+        
+        if len(freq) > 0:
+            result.append((freq, count))
+
+    return result
+
+print(word_frequency_with_boundary(song, 2))
